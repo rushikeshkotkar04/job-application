@@ -40,7 +40,7 @@ public class JobApplication {
         byte[] resume = resumeFile.getBytes();
         Info info=new Info(name,mobile,email,resume) ;
         infoRepo.save(info);
-        emailService.sendEmail("rushikeshkotkar73@gmail.com",name+" New Application",name+"Got new Application");
+        emailService.sendEmail("rushikeshkotkar73@gmail.com",name+" New Application",name+" sent new Application");
         return "redirect:/";
     }
 

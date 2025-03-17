@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Your Application</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    header h1 {
+        margin: 0;
+    }
+    .container {
+        max-width: 900px;
+        margin: 30px auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .container h2 {
+        text-align: center;
+        color: #333;
+    }
+    .section {
+        margin: 20px 0;
+    }
+    .section h3 {
+        color: #4CAF50;
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    input, select, textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
+  </style>
+  <script>
+    // Show the success popup message after the form is submitted
+    function showSuccessMessage() {
+        alert("Application submitted successfully. You will be contacted if your profile matches our needs.");
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <h1>Submit Your Application</h1>
+  <p>Please complete the form below to apply for the engineering role.</p>
+</header>
+
+<div class="container">
+  <h2>Application Form</h2>
+
+  <form method="post" th:action="@{/apply}" enctype="multipart/form-data" onsubmit="showSuccessMessage()">
+    <div class="section">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required="true" th:value="${application.name}">
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required="true" th:value="${application.email}">
+
+      <label for="mobile">Mobile Number</label>
+      <input type="text" id="mobile" name="mobile" required="true" th:value="${application.mobile}">
+
+      <label for="specialty">Area of Expertise</label>
+      <select id="specialty" name="specialty" required="true" th:value="${application.specialty}">
+        <option value="">Select your area of expertise</option>
+        <option value="Back End">Back End</option>
+        <option value="AI/ML">AI/ML</option>
+        <option value="MySQL">MySQL</option>
+      </select>
+
+      <label for="experience">Experience Summary (0-1 years)</label>
+      <textarea id="experience" name="experience" rows="4" required="true" th:value="${application.experience}"></textarea>
+
+      <label for="resume">Upload Your Resume</label>
+      <input type="file" id="resume" name="resume" required="true">
+
+      <button type="submit">Submit Application</button>
+    </div>
+  </form>
+</div>
+
+<footer>
+  <p>&copy; 2025  | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

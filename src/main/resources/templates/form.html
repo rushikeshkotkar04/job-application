@@ -109,8 +109,10 @@
         <option value="MySQL">MySQL</option>
       </select>
 
-      <label for="experience">Experience Summary (0-1 years)</label>
+      <label for="experience">Experience Summary (0-1+ years)</label>
       <textarea id="experience" name="experience" rows="4" required="true" th:value="${application.experience}"></textarea>
+      <label for="linkedin">LinkedIn Profile or other </label>
+      <input type="url" id="linkedin" name="linkedin" placeholder="https://www.linkedin.com/in/your-profile">
 
       <label for="resume">Upload Your Resume</label>
       <input type="file" id="resume" name="resume" required="true">

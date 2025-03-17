@@ -1,11 +1,10 @@
-package com.Jobportal.Jobportal;
+package com.Jobportal.Jobportal.controller;
 
 
+import com.Jobportal.Jobportal.Configure.EmailService;
 import com.Jobportal.Jobportal.Reppo.InfoRepo;
 import com.Jobportal.Jobportal.entities.Info;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +19,9 @@ public class JobApplication {
 
     @Autowired
     public InfoRepo infoRepo;
+
+    @Autowired
+    public EmailService emailService;
     @GetMapping("/")
     public String jobDesc(){
         return "jobdesc.html";
@@ -38,6 +40,7 @@ public class JobApplication {
         byte[] resume = resumeFile.getBytes();
         Info info=new Info(name,mobile,email,resume) ;
         infoRepo.save(info);
+        emailService.sendEmail("rushikeshkotkar73@gmail.com",name+" New Application",name+"Got new Application");
         return "redirect:/";
     }
 
